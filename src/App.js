@@ -25,7 +25,8 @@ function App() {
    */
   const fetchMovies = async (searchKey) => {
     const type = searchKey ? "search" : "discover"
-    const { data: { results },
+    const { 
+      data: { results },
     } = await axios.get(`${API_URL}/${type}/movie`, {
       params: {
         api_key: API_KEY,
@@ -179,8 +180,15 @@ function App() {
       <div className='container mt-3'>
         <div className='row'>
         {movies.map((movie)=>(
-          <div key={movie.id} className="col-md-4 mb-3" onClick={()=> selectMovie(movie)}>
-            <img src={`${IMAGE_URL + movie.poster_path}`} alt="URL_IMAGE" height={600} width="100%"/>
+          <div 
+          key={movie.id} 
+          className="col-md-4 mb-3" 
+          onClick={()=> selectMovie(movie)}
+          >
+            <img 
+            src={`${IMAGE_URL + movie.poster_path}`} 
+            alt="URL_IMAGE" height={600} 
+            width="100%"/>
             <h4 className='text-center'>{movie.title}</h4>
           </div>
         ))}
